@@ -13,7 +13,7 @@ const AddTask = ({ onAddTask }) => {
       onAddTask(taskName); // Appelle la fonction onAddTask (transmise par le parent) pour ajouter la tâche
       setTaskName(""); // Réinitialise le champ après l'ajout de la tâche
     } else {
-      alert("Veuillez entrer un nom pour la tâche."); // Alerte si la tâche est vide
+      alert("Please enter a name for the task."); // Alerte si la tâche est vide
     }
   };
 
