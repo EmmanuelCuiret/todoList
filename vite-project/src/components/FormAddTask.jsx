@@ -28,7 +28,7 @@ const AddTask = ({ onAddTask }) => {
       <div>
         <form id="formTask" onSubmit={handleSubmit}>
           <div>
-            <input type="text" placeholder="Task name" name="taskName" id="taskName" value={taskName} onChange={handleChange}  />
+            <input type="text" placeholder="Task name" name="taskName" id="taskName" value={taskName} onChange={handleChange} />
             <button type="submit">Create</button>
           </div>
         </form>

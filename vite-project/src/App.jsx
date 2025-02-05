@@ -5,7 +5,7 @@ import useTasks from "./hooks/useTasks";
 
 const App = () => {
   // Utilisation du hook pour gérer les tâches
-  const { tasks, filteredTasks, handleAddTask, handleCheck, handleDeleteTask, handleCheckAll, handleEditTask, handleShowAllTasks, handleShowDoneTasks, handleDeleteAllCheckedTask, activeButton } = useTasks();
+  const { tasks, filteredTasks, handleAddTask, handleCheck, handleDeleteTask, handleCheckAll, handleEditTask, handleShowAllTasks, handleShowDoneTasks, handleDeleteAllCheckedTask, activeButton, tasksLeftCounter } = useTasks();
 
   return (
     <>
@@ -21,7 +21,7 @@ const App = () => {
           {/*AFFICHAGE DES TACHES*/}
           <Todo filteredTasks={filteredTasks} handleCheck={handleCheck} handleDeleteTask={handleDeleteTask} handleCheckAll={handleCheckAll} handleEditTask={handleEditTask} />
           {/*AFFICHAGE DES BOUTONS DE PIED DE PAGE}*/}
-          <FooterButtons handleShowAllTasks={handleShowAllTasks} handleShowDoneTasks={handleShowDoneTasks} handleDeleteAllCheckedTask={handleDeleteAllCheckedTask} activeButton={activeButton} />
+          <FooterButtons handleShowAllTasks={handleShowAllTasks} handleShowDoneTasks={handleShowDoneTasks} handleDeleteAllCheckedTask={handleDeleteAllCheckedTask} activeButton={activeButton} tasksLeftCounter={tasksLeftCounter} />
         </main>
       </div>
     </>

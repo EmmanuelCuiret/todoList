@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import getInitialTasks from "../initialData";
 import { v4 as uuidv4 } from "uuid";
 
+const LSKEY = "MyTodoList";
+
 const useTasks = () => {
 
   const [tasks, setTasks] = useState(getInitialTasks());
@@ -11,7 +13,7 @@ const useTasks = () => {
   // Hook useEffect qui est déclenché chaque fois que l'état 'tasks' change.
   // Il met à jour le 'localStorage' avec les tâches actuelles sous forme JSON.
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem(LSKEY + ".tasks", JSON.stringify(tasks));
   }, [tasks]); // Dépendance sur 'tasks', donc le code à l'intérieur de useEffect sera exécuté à chaque modification de 'tasks'
 
   //Marquer une tâche comme terminée
@@ -63,6 +65,9 @@ const useTasks = () => {
   //Tâches filtrées
   const filteredTasks = tasks.filter((task) => (filter === "all" ? true : task.done));
 
+  //Compteur de tâches restantes à réaliser
+  const tasksLeftCounter = tasks.filter(task => !task.done).length;
+
   return {
     activeButton,
     filteredTasks,
@@ -74,7 +79,9 @@ const useTasks = () => {
     handleEditTask,
     handleShowAllTasks,
     handleShowDoneTasks,
+    tasksLeftCounter,
     tasks,
   };
 };
+
 export default useTasks;

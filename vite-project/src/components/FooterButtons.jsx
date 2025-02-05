@@ -1,7 +1,6 @@
 import React from "react";
 
-const FooterButtons = ({ handleShowAllTasks, handleShowDoneTasks, handleDeleteAllCheckedTask, activeButton }) => {
-  console.log(activeButton);
+const FooterButtons = ({ handleShowAllTasks, handleShowDoneTasks, handleDeleteAllCheckedTask, activeButton, tasksLeftCounter }) => {
   return (
     <div className="footer-buttons">
       <button onClick={handleShowAllTasks} className={activeButton === "all" ? "active-button" : ""}>
@@ -13,6 +12,7 @@ const FooterButtons = ({ handleShowAllTasks, handleShowDoneTasks, handleDeleteAl
       </button>
       &nbsp;
       <button onClick={handleDeleteAllCheckedTask}>Delete all</button>
+      <p>{tasksLeftCounter > 1 ? tasksLeftCounter + " tasks left" : tasksLeftCounter + " task left"}</p>
     </div>
   );
 };
