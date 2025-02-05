@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from "react";
+import { FaRegTrashCan, FaPencil, FaCheck, FaArrowRotateLeft } from "react-icons/fa6";
+import { FaCheckSquare } from "react-icons/fa";
 
 const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, handleEditTask }) => {
   const [editingTask, setEditingTask] = useState(null);
@@ -39,13 +41,13 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
             <label htmlFor="checkAll" className="labelCheckAll">
               <strong>Check all</strong>
             </label>
-            <input type="checkbox" className="inputCheckAll" onChange={handleCheckAll} checked={filteredTasks.every((task) => task.done)}></input>
+            <input type="checkbox" style={{ display: !editingTask ? "inline-block" : "none" }} className="inputCheckAll" onChange={handleCheckAll} checked={filteredTasks.every((task) => task.done)}></input>
           </li>
 
           {/*LIBELLE DE LA TACHE*/}
           {filteredTasks.map((task) => (
             <li key={task.id}>
-              <input type="checkbox" id={task.id} checked={task.done} onChange={() => handleCheck(task.id)} />
+              <input type="checkbox" style={{ display: !editingTask ? "inline-block" : "none" }} id={task.id} checked={task.done} onChange={() => handleCheck(task.id)} />
               {editingTask?.id === task.id ? (
                 // MODE EDITION
                 <span>
@@ -54,7 +56,7 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
                     value={editingTask.name}
                     onChange={(e) => setEditingTask({ ...editingTask, name: e.target.value })}
                     onKeyDown={(e) => {
-                      if (e.key == "Enter") handleSave();
+                      if (e.key === "Enter") handleSave();
                       if (e.key === "Escape") handleCancelEdit();
                     }}
                     autoFocus // Met le focus directement dans l'input
@@ -64,35 +66,32 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
                     autoCorrect="off"
                     spellCheck="false"
                   />
-                  <button onClick={handleCancelEdit} aria-label="Cancel">
-                    Cancel
-                  </button>
                 </span>
               ) : (
-                // MODE NORMAL
-
+                // MODE NORMAL*/}
                 <span style={{ textDecoration: task.done ? "line-through" : "none" }}>{task.name}</span>
               )}
 
-              {editingTask?.id === task.id && (
-                <button onClick={handleSave} aria-label="Save">
-                  Save
+              <div class="buttonAction">
+                {/*AFFICHAGE DU BOUTON CANCEL*/}
+                <button style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleCancelEdit} aria-label="Cancel">
+                  <FaArrowRotateLeft />
                 </button>
-              )}
+                {/*AFFICHAGE DU BOUTON SAUVER*/}
+                <button style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleSave} aria-label="Save">
+                  <FaCheck />
+                </button>
 
-              {!task.done && !editingTask && (
-                //AFFICHAGE DU BOUTON EDITER
-                <button className="buttonEdit" onClick={() => handleEdit(task)} aria-label="Modify the task">
-                  Edit
+                {/*AFFICHAGE DU BOUTON EDITER*/}
+                <button className="buttonEdit" style={{ display: !task.done && !editingTask ? "inline-block" : "none" }} onClick={() => handleEdit(task)} aria-label="Modify the task">
+                  <FaPencil />
                 </button>
-              )}
 
-              {task.done && (
-                //AFFICHAGE DU BOUTON SUPPRIMER
-                <button className="buttonDelete" onClick={() => handleDeleteTask(task.id)} aria-label="Delete the task">
-                  Delete
+                {/*AFFICHAGE DU BOUTON SUPPRIMER*/}
+                <button className="buttonDelete" style={{ display: task.done ? "inline-block" : "none" }} onClick={() => handleDeleteTask(task.id)} aria-label="Delete the task">
+                  <FaRegTrashCan />
                 </button>
-              )}
+              </div>
             </li>
           ))}
         </ul>
