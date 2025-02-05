@@ -7,8 +7,8 @@ const LSKEY = "MyTodoList";
 const useTasks = () => {
 
   const [tasks, setTasks] = useState(getInitialTasks());
-  const [filter, setFilter] = useState("all");
-  const [activeButton, setActiveButton] = useState("all");
+  const [filter, setFilter] = useState("todo");
+  const [activeButton, setActiveButton] = useState("todo");
 
   // Hook useEffect qui est déclenché chaque fois que l'état 'tasks' change.
   // Il met à jour le 'localStorage' avec les tâches actuelles sous forme JSON.
@@ -29,6 +29,7 @@ const useTasks = () => {
 
   //Ajouter une tâche
   const handleAddTask = (taskName) => {
+    if (!taskName.trim()) return; // Empêche l'ajout d'une tâche vide
     const newTask = { id: uuidv4(), name: taskName, done: false };
     setTasks([...tasks, newTask]);
   };
@@ -61,12 +62,20 @@ const useTasks = () => {
     setFilter("done");
     setActiveButton("done");
   };
+  const handleShowTodoTasks = () => {
+    setFilter("todo");
+    setActiveButton("todo");
+  };
 
   //Tâches filtrées
-  const filteredTasks = tasks.filter((task) => (filter === "all" ? true : task.done));
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "todo") return !task.done; // Tâches à faire
+    if (filter === "done") return task.done;  // Tâches terminées
+    return true; // Toutes les tâches
+  });
 
   //Compteur de tâches restantes à réaliser
-  const tasksLeftCounter = tasks.filter(task => !task.done).length;
+  const tasksLeftCounter = tasks.filter((task) => !task.done).length;
 
   return {
     activeButton,
@@ -79,6 +88,7 @@ const useTasks = () => {
     handleEditTask,
     handleShowAllTasks,
     handleShowDoneTasks,
+    handleShowTodoTasks,
     tasksLeftCounter,
     tasks,
   };

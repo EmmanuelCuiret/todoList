@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from "react";
 import { FaRegTrashCan, FaPencil, FaCheck, FaArrowRotateLeft } from "react-icons/fa6";
-import { FaCheckSquare } from "react-icons/fa";
+import { useLanguage } from "../contexts/LanguageContext"; // Import du contexte
 
 const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, handleEditTask }) => {
   const [editingTask, setEditingTask] = useState(null);
   const [originalTaskName, setOriginalTaskName] = useState("");
+  const { translations, switchLanguage } = useLanguage(); // Récupère les traductions et la fonction de changement de langue
 
   //Déclencher l'édition
   const handleEdit = useCallback((task) => {
@@ -30,19 +31,19 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
 
   return (
     <>
-      <h2>To do</h2>
-
       {filteredTasks.length === 0 ? (
         <p className="no-tasks">No task found.</p>
       ) : (
         <ul>
           {/*CHECKBOX "TOUT SELECTIONNER"*/}
-          <li className="liCheckAll">
-            <label htmlFor="checkAll" className="labelCheckAll">
-              <strong>Check all</strong>
-            </label>
-            <input type="checkbox" style={{ display: !editingTask ? "inline-block" : "none" }} className="inputCheckAll" onChange={handleCheckAll} checked={filteredTasks.every((task) => task.done)}></input>
-          </li>
+          {filteredTasks.length > 0 && (
+            <li className="liCheckAll">
+              <label htmlFor="checkAll" className="labelCheckAll">
+                <strong>{translations.checkAll}</strong>
+              </label>
+              <input type="checkbox" style={{ display: !editingTask ? "inline-block" : "none" }} className="inputCheckAll" onChange={handleCheckAll} checked={filteredTasks.every((task) => task.done)}></input>
+            </li>
+          )}
 
           {/*LIBELLE DE LA TACHE*/}
           {filteredTasks.map((task) => (
@@ -73,13 +74,13 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
               )}
 
               <div class="buttonAction">
+                {/*AFFICHAGE DU BOUTON SAUVER*/}
+                <button className="buttonSave" style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleSave} aria-label="Save">
+                  <FaCheck />
+                </button>
                 {/*AFFICHAGE DU BOUTON CANCEL*/}
                 <button style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleCancelEdit} aria-label="Cancel">
                   <FaArrowRotateLeft />
-                </button>
-                {/*AFFICHAGE DU BOUTON SAUVER*/}
-                <button style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleSave} aria-label="Save">
-                  <FaCheck />
                 </button>
 
                 {/*AFFICHAGE DU BOUTON EDITER*/}

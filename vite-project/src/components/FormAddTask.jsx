@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext"; // Import du contexte
 
 const AddTask = ({ onAddTask }) => {
   //onAddTask permet d'ajouter la nouvelle tâche à la liste des tâches
   //Utilisation de useState pour stocker le nom de la tâche
   const [taskName, setTaskName] = useState("");
+
+  const { translations, switchLanguage } = useLanguage(); // Récupère les traductions et la fonction de changement de langue
 
   //Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
@@ -13,7 +16,8 @@ const AddTask = ({ onAddTask }) => {
       onAddTask(taskName); // Appelle la fonction onAddTask (transmise par le parent) pour ajouter la tâche
       setTaskName(""); // Réinitialise le champ après l'ajout de la tâche
     } else {
-      alert("Please enter a name for the task."); // Alerte si la tâche est vide
+      alert(translations.taskRequired); // Alerte si la tâche est vide
+      focus;
     }
   };
 
@@ -24,12 +28,14 @@ const AddTask = ({ onAddTask }) => {
 
   return (
     <section>
-      <h2>New task</h2>
+      <h2>{translations.newTask}</h2>
       <div>
         <form id="formTask" onSubmit={handleSubmit}>
           <div>
-            <input type="text" placeholder="Task name" name="taskName" id="taskName" value={taskName} onChange={handleChange} />
-            <button type="submit">Create</button>
+            <input type="text" placeholder={translations.taskName} name="taskName" id="taskName" value={taskName} onChange={handleChange} />
+            <button className="buttonCreate" type="submit">
+              {translations.createTask}
+            </button>
           </div>
         </form>
       </div>

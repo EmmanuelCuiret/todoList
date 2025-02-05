@@ -8,7 +8,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  max-height: 100vh;
+  width: auto;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -60,7 +61,7 @@ h2 {
 /* Liste des tâches */
 ul {
   list-style: none;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   margin: 0;
 }
 
@@ -77,6 +78,13 @@ li {
   transition: background 0.3s ease;
   cursor: default;
   max-width: auto;
+}
+
+.liCheckAll {
+  background: #212121;
+  border: none;
+  box-shadow: none;
+  padding: 5px 0px;
 }
 
 li:hover {
@@ -98,6 +106,7 @@ input[type="checkbox"] {
 input[type="text"] {
   transform: scale(1); /* Agrandir la taille de la case */
   font-size: 1em; /* Agrandir la taille de la police de l'input */
+  max-width: 205px;
 }
 
 .labelCheckAll {
@@ -116,24 +125,39 @@ label.completed {
   color: #888;
 }
 
-.active-button {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-/* Bouton de suppression (❌) */
 button {
   background: #e57373;
   border: none;
-  padding: 8px 12px;
+  padding: 6px 8px;
   cursor: pointer;
   border-radius: 6px;
   font-size: 0.8em;
   transition: background 0.3s ease, transform 0.2s;
 }
 
+.language {
+  border: none;
+  margin-left: 5px;
+  margin-right: -20px;
+  margin-top: 15px;
+  background-color: none;
+  background: none;
+  outline: none;
+}
+
+.active-button {
+  padding: 6px 8px;
+}
+
+.buttonCreate {
+  margin-left: 5px;
+}
 .buttonDelete {
   font-size: 0.8em;
+}
+
+.buttonSave {
+  margin-bottom: 5px;
 }
 
 button:active {
@@ -179,13 +203,19 @@ button:nth-child(3):hover {
   margin-bottom: 20px;
 }
 
+.tasksLeft {
+  margin-top: 10px;
+  margin-bottom: -15px;
+}
+
 .footer-buttons {
   text-align: center;
   margin-top: 20px;
+  padding: 6px 8px;
 }
 
 .footer-buttons button {
-  padding: 10px 20px;
+  padding: 8px 10px;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -201,8 +231,7 @@ button:nth-child(3):hover {
 /* Responsive */
 @media (max-width: 680px) {
   main {
-    width: 90%;
-    margin-left: 0; /* Retirer la marge gauche sur petits écrans */
+    width: 95%;
   }
 
   h1 {
@@ -215,6 +244,6 @@ button:nth-child(3):hover {
 
   button {
     font-size: 0.8em;
-    padding: 7px 10px;
+    padding: 6px 8px;
   }
 }
