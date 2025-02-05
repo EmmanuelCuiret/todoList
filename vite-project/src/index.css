@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0;
-}
-
 /* Style général */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -19,14 +13,13 @@ body {
   line-height: 1.6;
 }
 
-/*
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
-*/
 
 /* Conteneur principal */
 main {
@@ -38,7 +31,7 @@ main {
   width: 100%;
   text-align: center;
   transition: transform 0.3s ease;
-  margin-left: 20px; /* Marge à gauche */
+  margin-left: 0px; /* Marge à gauche */
 }
 
 hr {

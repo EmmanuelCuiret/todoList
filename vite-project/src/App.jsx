@@ -9,19 +9,21 @@ const App = () => {
 
   return (
     <>
-      <header>
-        <h1>My Todo App</h1>
-      </header>
+      <div className="container">
+        <header>
+          <h1>My Todo App</h1>
+        </header>
 
-      <main>
-        {/*AJOUT D'UNE NOUVELLE TACHE*/}
-        <FormAddTask onAddTask={handleAddTask} />
-        <hr />
-        {/*AFFICHAGE DES TACHES*/}
-        <Todo filteredTasks={filteredTasks} handleCheck={handleCheck} handleDeleteTask={handleDeleteTask} handleCheckAll={handleCheckAll} handleEditTask={handleEditTask} />
-        {/*AFFICHAGE DES BOUTONS DE PIED DE PAGE}*/}
-        <FooterButtons handleShowAllTasks={handleShowAllTasks} handleShowDoneTasks={handleShowDoneTasks} handleDeleteAllCheckedTask={handleDeleteAllCheckedTask} activeButton={activeButton} />
-      </main>
+        <main>
+          {/*AJOUT D'UNE NOUVELLE TACHE*/}
+          <FormAddTask onAddTask={handleAddTask} />
+          <hr />
+          {/*AFFICHAGE DES TACHES*/}
+          <Todo filteredTasks={filteredTasks} handleCheck={handleCheck} handleDeleteTask={handleDeleteTask} handleCheckAll={handleCheckAll} handleEditTask={handleEditTask} />
+          {/*AFFICHAGE DES BOUTONS DE PIED DE PAGE}*/}
+          <FooterButtons handleShowAllTasks={handleShowAllTasks} handleShowDoneTasks={handleShowDoneTasks} handleDeleteAllCheckedTask={handleDeleteAllCheckedTask} activeButton={activeButton} />
+        </main>
+      </div>
     </>
   );
 };
