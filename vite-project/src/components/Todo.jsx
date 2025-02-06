@@ -73,13 +73,13 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
                 <span style={{ textDecoration: task.done ? "line-through" : "none" }}>{task.name}</span>
               )}
 
-              <div class="buttonAction">
+              <div className="buttonAction">
                 {/*AFFICHAGE DU BOUTON SAUVER*/}
                 <button className="buttonSave" style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleSave} aria-label="Save">
                   <FaCheck />
                 </button>
                 {/*AFFICHAGE DU BOUTON CANCEL*/}
-                <button style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleCancelEdit} aria-label="Cancel">
+                <button className="buttonCancel" style={{ display: editingTask?.id === task.id && !task.done ? "inline-block" : "none" }} onClick={handleCancelEdit} aria-label="Cancel">
                   <FaArrowRotateLeft />
                 </button>
 
