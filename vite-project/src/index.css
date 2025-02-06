@@ -268,8 +268,7 @@ button:nth-child(3):hover {
 /* Responsive */
 @media (max-width: 680px) {
   main {
-    max-width: 680px;
-    width: 95%;
+    width: 90%;
   }
 
   h1 {
