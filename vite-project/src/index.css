@@ -40,7 +40,7 @@ hr {
 /* Titre */
 h1 {
   color: #81c784; /* Vert clair pour accent */
-  font-size: 1.8em;
+  font-size: 1.7em;
   margin-bottom: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -126,6 +126,7 @@ label.completed {
 }
 
 button {
+  background: none;
   border: none;
   padding: 6px 8px;
   cursor: pointer;
@@ -134,11 +135,23 @@ button {
   transition: background 0.3s ease, transform 0.2s;
 }
 
+/*
 .language {
-  margin-left: 0px;
+  margin-left: 10px;
   margin-right: -20px;
   margin-top: 10px;
   background: none;
+}
+*/
+
+.activeLanguage {
+  background: none;
+  margin: -5px;
+  transform: scale(1.2);
+}
+
+.nonActiveLanguage {
+  transform: scale(0.8);
 }
 
 .active-button {
@@ -240,6 +253,8 @@ button:nth-child(3):hover {
 }
 
 .footer-buttons {
+  display: flex;
+  flex-direction: row;
   text-align: center;
   margin-top: 20px;
   padding: 6px 8px;

@@ -17,7 +17,7 @@ const AddTask = ({ onAddTask }) => {
       setTaskName(""); // Réinitialise le champ après l'ajout de la tâche
     } else {
       alert(translations.taskRequired); // Alerte si la tâche est vide
-      focus;
+      autoFocus;
     }
   };
 

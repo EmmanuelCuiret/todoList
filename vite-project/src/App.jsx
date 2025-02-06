@@ -8,7 +8,7 @@ import { useLanguage } from "./contexts/LanguageContext";
 const App = () => {
   // Utilisation du hook pour gérer les tâches
   const { tasks, filteredTasks, handleAddTask, handleCheck, handleDeleteTask, handleCheckAll, handleEditTask, handleShowAllTasks, handleShowDoneTasks, handleShowTodoTasks, handleDeleteAllCheckedTask, activeButton, tasksLeftCounter } = useTasks();
-  const { translations, switchLanguage } = useLanguage(); // Récupère les traductions et la fonction de changement de langue
+  const { language, translations, switchLanguage } = useLanguage(); // Récupère les traductions et la fonction de changement de langue
 
   return (
     <>
@@ -17,10 +17,10 @@ const App = () => {
           <h1>
             My Todo App
             {/* Boutons pour changer la langue */}
-            <button className="language" onClick={() => switchLanguage("en")}>
+            <button onClick={() => switchLanguage("en")} className={language === "en" ? "activeLanguage" : "nonActiveLanguage"}>
               🇬🇧
             </button>
-            <button className="language" onClick={() => switchLanguage("fr")}>
+            <button onClick={() => switchLanguage("fr")} className={language === "fr" ? "activeLanguage" : "nonActiveLanguage"}>
               🇫🇷
             </button>
           </h1>

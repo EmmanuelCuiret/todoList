@@ -32,7 +32,7 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
   return (
     <>
       {filteredTasks.length === 0 ? (
-        <p className="no-tasks">No task found.</p>
+        <p className="no-tasks">{(translations.noTaskFound)}</p>
       ) : (
         <ul>
           {/*CHECKBOX "TOUT SELECTIONNER"*/}
