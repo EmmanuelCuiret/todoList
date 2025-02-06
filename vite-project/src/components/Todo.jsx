@@ -32,14 +32,14 @@ const Todo = ({ filteredTasks, handleCheck, handleDeleteTask, handleCheckAll, ha
   return (
     <>
       {filteredTasks.length === 0 ? (
-        <p className="no-tasks">{(translations.noTaskFound)}</p>
+        <p className="no-tasks">{translations.noTaskFound}</p>
       ) : (
         <ul>
           {/*CHECKBOX "TOUT SELECTIONNER"*/}
           {filteredTasks.length > 0 && (
             <li className="liCheckAll">
               <label htmlFor="checkAll" className="labelCheckAll">
-                <strong>{translations.checkAll}</strong>
+                {translations.checkAll}
               </label>
               <input type="checkbox" style={{ display: !editingTask ? "inline-block" : "none" }} className="inputCheckAll" onChange={handleCheckAll} checked={filteredTasks.every((task) => task.done)}></input>
             </li>

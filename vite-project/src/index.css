@@ -26,7 +26,7 @@ main {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-  max-width: 480px;
+  min-width: 400px;
   text-align: center;
   transition: transform 0.3s ease;
   margin-left: 0px auto; /* Marge à gauche */
@@ -169,7 +169,6 @@ button {
 }
 
 .buttonDelete {
-  font-size: 0.8em;
   background: #42a5f5;
 }
 
@@ -200,8 +199,8 @@ button:active {
 /* Style des boutons de filtre */
 
 button:not(:last-child) {
-  margin-right: 0px;
-  margin-left: 8px;
+  margin-right: 5px;
+  margin-left: 0px;
 }
 /*
 button:nth-child(1) {
@@ -267,10 +266,6 @@ button:nth-child(3):hover {
 
 /* Responsive */
 @media (max-width: 680px) {
-  main {
-    width: 90%;
-  }
-
   h1 {
     font-size: 1.5em;
   }
