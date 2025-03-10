@@ -3,6 +3,7 @@ import React, { createContext, useState, useContext } from "react";
 //Définition des textes pour chaque langue
 const translations = {
   en: {
+    appTitle: "Reminder",
     checkAll: "Check all",
     createTask: "Create",
     deleteAll: "Delete all",
@@ -17,6 +18,7 @@ const translations = {
     tasksLeftPlural: " tasks left",
   },
   fr: {
+    appTitle: "Pense-bête",
     checkAll: "Cocher tout",
     createTask: "Créer",
     deleteAll: "Tout supprimer",

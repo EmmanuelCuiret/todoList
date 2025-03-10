@@ -15,14 +15,12 @@ const App = () => {
       <div className="container">
         <header>
           <h1>
-            My Todo App
+            {translations.appTitle}
             {/* Boutons pour changer la langue */}
             <button onClick={() => switchLanguage("en")} className={language === "en" ? "activeLanguage" : "nonActiveLanguage"}>
-              🇬🇧
-            </button>
+              <img src="../flag_gb.png" alt="GB"></img></button>
             <button onClick={() => switchLanguage("fr")} className={language === "fr" ? "activeLanguage" : "nonActiveLanguage"}>
-              🇫🇷
-            </button>
+            <img src="../flag_fr.png" alt="GB"></img></button>
           </h1>
         </header>
 
